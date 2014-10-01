@@ -1,0 +1,222 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>Growler</title>
+	<link rel="stylesheet" href="../css/growler.css" type="text/css" media="screen" charset="utf-8">
+	<script src="../lib/protoculous-effects-packer.js" type="text/javascript" charset="utf-8"></script>
+	<script src="src/Growler.js" type="text/javascript" charset="utf-8"></script>
+	<script src="growler.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+	<div id="doc">
+		<div id="exdoc">
+			<div id="exhd">
+				<h1>Growler</h1>
+				<div id="extabs">
+					<span id="tb1">Overview</span>
+					<span id="tb2">Basic</span>
+					<span id="tb3">Themes</span>
+					<span id="tb4">Notifications</span>
+					<span id="tb5">Events</span>
+				</div>
+			</div>
+			<div id="exbd">
+				<div id="tb1b" style="display:none;" class="sheet">
+					<p>
+						<h2>Usage</h2>
+						<p>
+							Include the Growler.js on your page after prototype.js. I use the <a href="http://groups.google.com/group/prototype-core/" target="_blank">protopacked</a> which is included in the download. Otherwise, scriptaculous effects must be included before the Growler class.
+							<ul class="code">
+								<li>&lt;script src="prototype.js" type="text/javascript" charset="utf-8"&gt;&lt;/script&gt;</li>
+								<li>&lt;script src="Growler.js" type="text/javascript" charset="utf-8"&gt;&lt;/script&gt;</li>
+							</ul>
+						</p>
+						<p>
+							Include the growler stylesheet. You can also create CSS rules for Growler-notice, Growler-notice-head, and Growler-notice-exit in your own stylesheet.
+						</p>
+						<p>
+							Create an instance of the Growler class and call the growl method to show a notice.
+							<ul class="code">
+								<li>var g = new k.Growler();</li>
+								<li>g.growl(message, [options]);</li>
+							</ul>
+						</p>
+					</p>
+					<hr/>
+					<p>
+						<h2>Options</h2>
+						<p>
+							<table width="100%" border="1" bordercolor="#999">
+								<tr>
+									<th width="70">Option</th>
+									<th width="70">Default</th>
+									<th>Description</th>
+								</tr>
+								<tr>
+									<td colspan="3" class="shaded">Notice Options</td>
+								</tr>
+								<tr>
+									<td>header</td>
+									<td>&nbsp;</td>
+									<td>The title that is displayed for the notice.</td>
+								</tr>
+								<tr>
+									<td>speedin</td>
+									<td>0.3</td>
+									<td>The speed in seconds in which the notice is shown.</td>
+								</tr>
+								<tr>
+									<td>speedout</td>
+									<td>0.5</td>
+									<td>The speed in seconds in which the notice is hidden.</td>
+								</tr>
+								<tr>
+									<td>life</td>
+									<td>5</td>
+									<td>The number of seconds in which the notice remains visible.</td>
+								</tr>
+								<tr>
+									<td>sticky</td>
+									<td>false</td>
+									<td>Determines if the notice should always remain visible until closed by the user.</td>
+								</tr>
+								<tr>
+									<td>className</td>
+									<td>&nbsp;</td>
+									<td>An optional CSS class to apply to notice.</td>
+								</tr>
+								<tr>
+									<td colspan="3" class="shaded">Notice Event Options</td>
+								</tr>
+								<tr>
+									<td>created</td>
+									<td>&nbsp;</td>
+									<td>&nbsp;</td>
+								</tr>
+								<tr>
+									<td>destroyed</td>
+									<td>&nbsp;</td>
+									<td>&nbsp;</td>
+								</tr>
+								<tr>
+									<td colspan="3" class="shaded">Growler Options</td>
+								</tr>
+								<tr>
+									<td>location</td>
+									<td>tr (top right)</td>
+									<td>The location of the growler notices. This can be:
+										<div>tr (top-right)</div>
+										<div>br (bottom-right)</div>
+										<div>tl (top-left)</div>
+										<div>bl (bottom-left)</div>
+										<div>tc (top-center)</div>
+										<div>bc (bottom-center)</div>
+									</td>
+								</tr>
+								<tr>
+									<td>width</td>
+									<td>250px</td>
+									<td>The width of the growler notices by default depends on the width of the growler container.</td>
+								</tr>
+							</table>
+						</p>
+					</p>
+					<hr/>
+					<p>
+						<h2>Compatibility</h2>
+						<p>
+							Growler has been tested with Safari 3(Mac|Win), Firefox 3(Mac|Win), IE6, IE7, and Opera.
+						</p>
+					</p>
+					<hr/>
+					<p>
+						<h2>Requirements</h2>
+						<p>Growler requires <a href="http://prototypejs.org/" target="_blank">prototype 1.6</a> and <a href="http://script.aculo.us/" target="_blank">scriptaculous 1.8.1 effects</a></p>
+					</p>
+				</div>
+				<div id="tb2b" style="display:none;">
+					<h2>Basic</h2>
+					<div class="box">Basic usage. Demonstrates usage of headers, extended duration, and sticky notices.</div>
+					<h3>Simple notice.<span class="runner" id="e1">run</span></h3>
+					<ul class="code">
+						<li class="span-0">g.growl("Simple notice");</li>
+					</ul>
+					<h3>Notice with header.<span class="runner" id="e2">run</span></h3>
+					<ul class="code">
+						<li class="span-0">g.growl("...with header", {header: "Growler Notice"});</li>
+					</ul>
+					<h3>Notice that stays longer.<span class="runner" id="e3">run</span></h3>
+					<ul class="code">
+						<li class="span-0">g.growl("Long lasting notice (20s)", {life: 20});</li>
+					</ul>
+					<h3>Sticky notice.<span class="runner" id="e4">run</span></h3>
+					<ul class="code">
+						<li class="span-0">g.growl("Sticky notice", {sticky: true});</li>
+					</ul>
+				</div>
+				<div id="tb3b" style="display:none;">
+					<h2>Themes</h2>
+					<div class="box">Using including themes.</div>
+					<h3>Candybar Theme.<span class="runner" id="e5a">run</span></h3>
+					<ul class="code">
+						<li class="span-0">g.growl("Candy is good", {header: "Candybar Theme", className: "candybar", sticky: true});</li>
+					</ul>
+					<h3>Plain Theme.<span class="runner" id="e5b">run</span></h3>
+					<ul class="code">
+						<li class="span-0">g.growl("Visit <a>kProto</a> for more Prototype classes.", {className: "plain"});</li>
+					</ul>
+					<h3>MacOSX Theme.<span class="runner" id="e5c">run</span></h3>
+					<ul class="code">
+						<li class="span-0">g.growl("The funnest iPod ever. Millions of songs. Thousands of movies. Hundreds of games. &lt;a target='_blank' href='http://www.apple.com/ipodtouch/whatsnew.html'&gt;Learn more&lt;/a&gt;", {header: "iPod Touch", className: "macosx", sticky: true});</li>
+					</ul>
+					<h3>AtWork Theme.<span class="runner" id="e5d">run</span></h3>
+					<ul class="code">
+						<li class="span-0">g.growl("This is a test to see how well the theme handles text that is long. It should stretch height-wise.", {header: "At Work Theme", className: "atwork"});</li>
+					</ul>
+				</div>
+				<div id="tb4b" style="display:none;">
+					<h2>Notifications</h2>
+					<div class="box">Using Growler for notifications.</div>
+					<h3>Important Notice.<span class="runner" id="e6">run</span></h3>
+					<ul class="code">
+						<li class="span-0">g.info("Something good happended", {life: 10});</li>
+					</ul>
+					<h3>Warning Notice.<span class="runner" id="e7">run</span></h3>
+					<ul class="code">
+						<li class="span-0">g.warn("Take heed", {life: 10});</li>
+					</ul>
+					<h3>Critical Notice.<span class="runner" id="e8">run</span></h3>
+					<ul class="code">
+						<li class="span-0">g.error("Something bad happened", {life: 10});</li>
+					</ul>
+				</div>
+				<div id="tb5b" style="display:none;">
+					<h2>Events</h2>
+					<div class="box">Using Growler events.</div>
+					<h3>Notice with events.<span class="runner" id="e9">run</span></h3>
+					<ul class="code">
+						<li class="span-0">g.growl("Notice w/Events", {</li>
+						<li class="span-1">created: function(){</li>
+						<li class="span-2">$("noticeevents").innerHTML += "&lt;div&gt;Notice created...&lt;/div&gt;";</li>
+						<li class="span-1">},</li>
+						<li class="span-1">destroyed: function(){</li>
+						<li class="span-2">$("noticeevents").innerHTML += "&lt;div&gt;...Notice destroyed&lt;/div&gt;";</li>
+						<li class="span-1">}</li>
+						<li class="span-0">});</li>
+					</ul>
+					<div id="noticeevents"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+	</script>
+	<script type="text/javascript">
+		var pageTracker = _gat._getTracker("UA-5131920-2"); pageTracker._initData(); pageTracker._trackPageview();
+	</script>
+</body>
+</html>
